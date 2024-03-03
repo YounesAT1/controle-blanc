@@ -36,6 +36,7 @@ Route::post('/offres/store', [OffreController::class, 'store'])->name('offre.sto
 Route::get('/offres/{offre}/edit', [OffreController::class, 'edit'])->name('offre.edit');
 Route::put('/offres/{offre}', [OffreController::class, 'update'])->name('offre.update');
 Route::delete('/offres/{offre}', [OffreController::class, 'destroy'])->name('offre.destroy');
+Route::post('/offres/stagiaireAccepter', [OffreController::class, 'stagiaireAccepter'])->name('offre.stagiaireAccepter');
 
 
 //? SPECIALITE ROUTES

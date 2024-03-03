@@ -4,7 +4,31 @@
 
 @section('content')
   <div class="my-6">
-    <a href="{{ route('offre.create') }}" class="bg-blue-500 text-white py-2 px-4 rounded inline-block mb-4">Ajouter</a>
+
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-x-2">
+        <form action="{{ route('offre.stagiaireAccepter') }}" method="post">
+          @csrf
+          <select name="stagiaireAccepter" id="stagiaireAccepter" class="p-2 border rounded">
+            <option value="" disabled selected class="text-gray-500">Choisissez une offre</option>
+            @foreach ($offresList as $offre)
+              <option value="{{ $offre->idO }}">{{ $offre->titre }}</option>
+            @endforeach
+          </select>
+          <button type="submit"
+            class="bg-indigo-500 text-white p-2 rounded hover:bg-indigo-700 focus:outline-none focus:shadow-outline-blue">
+            Afficher Stagiaires Accepter
+          </button>
+          @error('stagiaireAccepter')
+            <p class="text-red-500 text-l">{{ $message }}</p>
+          @enderror
+        </form>
+
+      </div>
+
+      <a href="{{ route('offre.create') }}" class="bg-blue-500 text-white py-2 px-4 rounded inline-block mb-4">Ajouter</a>
+    </div>
+
 
     <table class="min-w-full bg-white border border-gray-300 ">
       <thead>

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Entreprise;
 use App\Models\Offre;
+use App\Models\Postuler;
+use App\Models\Entreprise;
 use App\Models\Specialite;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class OffreController extends Controller
 {
@@ -66,6 +67,25 @@ class OffreController extends Controller
     public function destroy (Offre $offre) {
         $offre->delete();
         return redirect()->route('offre.index');
+
+    }
+
+    public function stagiaireAccepter(Request $request) {
+        $champsValider = $request->validate([
+            "stagiaireAccepter" => 'required',
+        ],
+        [
+            'stagiaireAccepter' => 'Selectionner une offre'
+        ]);
+
+        $offreId = $request->input('stagiaireAccepter');
+
+        $acceptedStagiaires = Postuler::where('idO', $offreId)
+        ->where('etat', 'accepter')
+        ->with('stagiaire') 
+        ->get();
+
+        return view('offre.stagiaireAccepter', compact('acceptedStagiaires'));
 
     }
 }

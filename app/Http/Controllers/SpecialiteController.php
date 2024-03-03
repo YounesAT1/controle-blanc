@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Specialite;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class SpecialiteController extends Controller
 {
     public function index() {
-        $specialiteList = Specialite::all();
+        $specialiteList = Specialite::withCount('offres')->get();
         return view('specialite.index', compact('specialiteList'));
     }
 

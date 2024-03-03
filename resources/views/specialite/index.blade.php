@@ -35,6 +35,7 @@
           <th class="py-3 px-4 bg-gray-200 border-b">ID</th>
           <th class="py-3 px-4 bg-gray-200 border-b">Titre</th>
           <th class="py-3 px-4 bg-gray-200 border-b">Description</th>
+          <th class="py-3 px-4 bg-gray-200 border-b">Nombre d'offre</th>
           <th class="py-3 px-4 bg-gray-200 border-b">Action</th>
         </tr>
       </thead>
@@ -45,6 +46,7 @@
               <td class="py-2 px-4 border-b">{{ $specialite->idSpe }}</td>
               <td class="py-2 px-4 border-b">{{ $specialite->titre }}</td>
               <td class="py-2 px-4 border-b">{{ $specialite->description }}</td>
+              <td class="py-2 px-4 border-b">{{ $specialite->offres_count }}</td>
 
               <td class="py-2 px-4 border-b">
                 <a href="{{ route('specialite.edit', $specialite) }}"
