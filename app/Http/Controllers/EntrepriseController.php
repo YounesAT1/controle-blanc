@@ -29,9 +29,9 @@ class EntrepriseController extends Controller
             'nom.required' => 'Nom est obligatoire',
             'adresse.required' => 'Adresse est obligatoire',
             'photo.required' => 'Photo est obligatoire',
-            'photo.image' => 'Le fichier doit être une image',
-            'photo.mimes' => 'Les formats d\'image autorisés sont : jpg, jpeg, png',
-            'photo.max' => 'La taille de l\'image ne doit pas dépasser 5 Mo',
+            'photo.image' => 'Le fichier doit etre une image',
+            'photo.mimes' => 'Les formats d\'image autorises sont : jpg, jpeg, png',
+            'photo.max' => 'La taille de l\'image ne doit pas depasser 5 Mo',
         ]);
     }
 
@@ -82,7 +82,7 @@ class EntrepriseController extends Controller
         $entreprise['photo'] = $photoSrc;
 
         Entreprise::create($entreprise);
-        return redirect()->route('entreprise.index')->with('status', 'Entreprise ajoutée avec succès');
+        return redirect()->route('entreprise.index');
     }
 
     public function edit(Entreprise $entreprise)
@@ -102,13 +102,13 @@ class EntrepriseController extends Controller
         $entreprise->adresse = $validatedData['adresse'];
         $entreprise->save();
 
-        return redirect()->route('entreprise.index')->with('status', 'Entreprise modifiée avec succès');
+        return redirect()->route('entreprise.index');
     }
 
     public function destroy(Entreprise $entreprise)
     {
         $entreprise->delete();
-        return redirect()->route('entreprise.index')->with('status', 'L\'entreprise a été supprimée avec succès !');
+        return redirect()->route('entreprise.index');
     }
 
     public function offreList(Request $request) {

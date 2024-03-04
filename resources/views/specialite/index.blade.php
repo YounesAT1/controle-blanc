@@ -25,7 +25,7 @@
 
       </div>
 
-      <a href="{{ route('entreprise.create') }}"
+      <a href="{{ route('specialite.create') }}"
         class="bg-blue-500 text-white py-2 px-4 rounded inline-block mb-4">Ajouter</a>
     </div>
 
